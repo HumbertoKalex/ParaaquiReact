@@ -4,14 +4,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {
   StatusBar,
   StyleSheet,
-  Text,
   View,
   TextInput,
   Button,
   Image,
 } from "react-native";
 import logo from "./assets/logo_transparent_background.png";
-import DashboardScreen from "./DashboardScreen";
+import Checkins from "./Checkins";
 import { Alert } from "react-native";
 
 const Stack = createStackNavigator();
@@ -23,12 +22,11 @@ function LoginScreen({ navigation }) {
   const handleLogin = () => {
     console.log("Username:", username, "Password:", password);
     if (username == "admin" && password == "1234") {
-      navigation.navigate("DashboardScreen");
+      navigation.navigate("Checkins");
     } else {
       Alert.alert("Erro", "Usuário ou senha incorretos.");
     }
   };
-
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} resizeMode="contain" />
@@ -60,7 +58,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen name="Checkins" component={Checkins} />
       </Stack.Navigator>
     </NavigationContainer>
   );
